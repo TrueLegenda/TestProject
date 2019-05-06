@@ -13,7 +13,6 @@ public class SphereHandler : MonoBehaviour
 
     void Start()
     {
-        Time.fixedDeltaTime = Time.deltaTime;
         v = 1f;
         vCap = 1.5f;
         thrust = 0.23f;
@@ -42,9 +41,7 @@ public class SphereHandler : MonoBehaviour
 
             if(Input.GetKey(KeyCode.Space) && collisionDetected)
             {
-                print(sphere.transform.position);
                 rb.AddForce(0f, 2f, 0f, ForceMode.Impulse);
-                print(sphere.transform.position);
             }
 
             if (v <= vCap)

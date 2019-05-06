@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraHandler.cs" />
+    <Compile Include="Assets\Scripts\FloorHandler.cs" />
     <Compile Include="Assets\Scripts\SphereHandler.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/zorit/Desktop/GameWithTomer/New Unity Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
