@@ -10,3 +10,5 @@ To Do:
 4 - Game Manager(Load Map)
 
 5 - Floor Handler
+
+# Suggestions
