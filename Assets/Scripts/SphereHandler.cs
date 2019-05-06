@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,55 +19,72 @@ public class SphereHandler : MonoBehaviour
         vCap = 1.5f;
         thrust = 0.23f;
     }
-
     void Update()
     {
+        // Check if key is pressed
         if (Input.anyKey)
         {
-            if (Input.GetKey(KeyCode.W))
+            // Variables
+            KeyCode key = GetKey();
+            Vector3 ForceDirection = Vector3.zero;
+
+            // Check key
+            if (key == KeyCode.W)
             {
-                rb.AddForce(-thrust * v, 0f, 0f, ForceMode.VelocityChange);
+                ForceDirection = new Vector3(-thrust * v, 0f, 0f);
             }
-            if (Input.GetKey(KeyCode.S))
+            else if (key == KeyCode.S)
             {
-                rb.AddForce(thrust * v, 0f, 0f, ForceMode.VelocityChange);
+                ForceDirection = new Vector3(thrust * v, 0f, 0f);
             }
-            if (Input.GetKey(KeyCode.D))
+            else if (key == KeyCode.D)
             {
-                rb.AddForce(0f, 0f, thrust * v, ForceMode.VelocityChange);
+                ForceDirection = new Vector3(0f, 0f, thrust * v);
             }
-            if (Input.GetKey(KeyCode.A))
+            else if (key == KeyCode.A)
             {
-                rb.AddForce(0f, 0f, -thrust * v, ForceMode.VelocityChange);
+                ForceDirection = new Vector3(0f, 0f, -thrust * v);
+            }
+            else if (key == KeyCode.Space && collisionDetected)
+            {
+                ForceDirection = new Vector3(0f, 2f, 0f);
             }
 
-            if(Input.GetKey(KeyCode.Space) && collisionDetected)
-            {
-                print(sphere.transform.position);
-                rb.AddForce(0f, 2f, 0f, ForceMode.Impulse);
-                print(sphere.transform.position);
-            }
-
+            // Add force
+            rb.AddForce(ForceDirection, ForceMode.Impulse);
+            
+            // Refresh velocity
             if (v <= vCap)
             {
                 v += 0.05f;
             }
-
         }
         else
         {
+            // Reset velocity
             v = 1;
         }
+    }
+
+    KeyCode GetKey()
+    {
+        foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))
+        {
+            if (Input.GetKey(key))
+            {
+                return key;
+            }
+        }
+
+        return KeyCode.None;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         collisionDetected = true;
     }
-
     private void OnCollisionExit(Collision collision)
     {
         collisionDetected = false;
     }
-
 }
