@@ -9,6 +9,8 @@
 
 5 - Floor Handler
 
+6 - Level Manager(Generate Map)
+
 # Suggestions
 1 - Commit Per Task
 
