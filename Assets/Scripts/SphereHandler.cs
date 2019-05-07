@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class SphereHandler : MonoBehaviour
 {
+    // Variables
+    public static bool FinishedLevel = false;
     private bool collisionDetected = true;
     public GameObject sphere;
     public Rigidbody rb;
@@ -78,9 +80,16 @@ public class SphereHandler : MonoBehaviour
         return KeyCode.None;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision other)
     {
         collisionDetected = true;
+
+        // Check If Player Finished The Level
+        if (other.collider.tag == "Endpoint")
+        {
+            //Next Level
+            print("finished level");
+        }
     }
     private void OnCollisionExit(Collision collision)
     {
