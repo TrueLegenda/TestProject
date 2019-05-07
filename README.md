@@ -5,11 +5,7 @@
 
 3 - Trampoline
 
-4 - Game Manager(Load Map)
-
-5 - Floor Handler
-
-6 - Level Manager(Generate Map)
+5 - Level Manager(Generate Map)
 
 # Suggestions
 1 - Commit Per Task
