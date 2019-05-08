@@ -7,6 +7,8 @@
 
 5 - Level Manager(Generate Map)
 
+6 - End Game After 3 Strikes
+
 # Suggestions
 1 - Commit Per Task
 
