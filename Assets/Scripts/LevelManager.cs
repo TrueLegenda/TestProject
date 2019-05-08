@@ -56,12 +56,12 @@ public class LevelManager : MonoBehaviour
 
     void GenerateMap()
     {
+        // Set Level Difficulty
+        surface.transform.localScale = new Vector3(1.25f * surface.transform.localScale.x, 1f, 16f);
+
         // Add Floor Data
         Position.Add(new Vector3(-surface.transform.localScale.x / 2 + 3, 1f, -0.5f));
         Model.Add("Floor");
-        // Set Level Difficulty
-        surface.transform.localScale = new Vector3(1.25f * surface.transform.localScale.x, 1f, 16f);
-        print(surface.transform.localScale);
 
         // Determine Amount Of Obstacles
         // Whole Surface Size
