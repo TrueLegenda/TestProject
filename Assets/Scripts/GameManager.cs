@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // Create A Random() Instance
     System.Random rnd = new System.Random();
     //Variables
     public static int Level = 1;
@@ -29,8 +30,20 @@ public class GameManager : MonoBehaviour
                         obj.name = "Floor";
                         break;
                     case "Obstacle":
-                        obj = Obstacle_2;
-                        obj.name = "Obstacle";
+                        // Choose Obstacle Randomly
+                        if (rnd.Next(1, 5) == 1)
+                        {
+                            obj = Obstacle_1;
+                            obj.name = "Obstacle_1";
+
+                            // Set Z Position To The Middle Of The Map
+                            LevelManager.Position[i] = new Vector3(LevelManager.Position[i].x, LevelManager.Position[i].y, -0.5f);
+                        }
+                        else
+                        {
+                            obj = Obstacle_2;
+                            obj.name = "Obstacle_2";
+                        }
                         break;
                     case "Endpoint":
                         obj = Endpoint;
@@ -47,9 +60,9 @@ public class GameManager : MonoBehaviour
     {
         Destroy(GameObject.FindGameObjectWithTag("FloorTag"));
         Destroy(GameObject.FindGameObjectWithTag("Endpoint"));
-        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Obstacle_2_Tag").Length; i++)
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Obstacle").Length; i++)
         {
-            Destroy(GameObject.FindGameObjectsWithTag("Obstacle_2_Tag")[i]);
+            Destroy(GameObject.FindGameObjectsWithTag("Obstacle")[i]);
         }
     }
 

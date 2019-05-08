@@ -5,6 +5,7 @@ using System;
 
 public class LevelManager : MonoBehaviour
 {
+    // Create A Random() Instance
     System.Random rnd = new System.Random();
     // Variables
     private GameObject player;
@@ -39,7 +40,6 @@ public class LevelManager : MonoBehaviour
 
             // Generate Next Map
             GenerateMap();
-
             // Respawn
             RespawnPlayer();
         }
@@ -56,9 +56,12 @@ public class LevelManager : MonoBehaviour
 
     void GenerateMap()
     {
-        //Add Floor Data
-        Position.Add(new Vector3(-48f, 1f, -0.5f));
+        // Add Floor Data
+        Position.Add(new Vector3(-surface.transform.localScale.x / 2 + 3, 1f, -0.5f));
         Model.Add("Floor");
+        // Set Level Difficulty
+        surface.transform.localScale = new Vector3(1.25f * surface.transform.localScale.x, 1f, 16f);
+        print(surface.transform.localScale);
 
         // Determine Amount Of Obstacles
         // Whole Surface Size
@@ -73,7 +76,7 @@ public class LevelManager : MonoBehaviour
         // Instructions For Object's Properties (Model And Position)
         for (int i = 0; i < obstaclesAmount; i++)
         {
-            Vector3 pos = new Vector3(-2 - spacing * (i + 1), i * rnd.Next(2, 3), rnd.Next(-6, 6));
+            Vector3 pos = new Vector3(-spacing * (i + 1), i * rnd.Next(2, 3), rnd.Next(-6, 6));
             Position.Add(pos);
             Model.Add("Obstacle");
         }
@@ -86,4 +89,14 @@ public class LevelManager : MonoBehaviour
         FinishedGenerating = true;
     }
 
+    private void OnApplicationQuit()
+    {
+        // Reset Floor Size When Player Quits
+        ResetFloor();
+    }
+
+    void ResetFloor()
+    {
+        surface.transform.localScale = new Vector3(50f, 1, 16);
+    }
 }

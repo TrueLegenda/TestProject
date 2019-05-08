@@ -7,6 +7,7 @@ TagManager:
   - Endpoint
   - FloorTag
   - Obstacle_2_Tag
+  - Obstacle
   layers:
   - Default
   - TransparentFX

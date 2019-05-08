@@ -53,23 +53,23 @@ public class SphereHandler : MonoBehaviour
             // Check key
             if (key == KeyCode.W)
             {
-                ForceDirection = new Vector3(-thrust * v, 0f, 0f);
+                Move("forward");
             }
             else if (key == KeyCode.S)
             {
-                ForceDirection = new Vector3(thrust * v, 0f, 0f);
+                Move("backward");
             }
             else if (key == KeyCode.D)
             {
-                ForceDirection = new Vector3(0f, 0f, thrust * v);
+                Move("right");
             }
             else if (key == KeyCode.A)
             {
-                ForceDirection = new Vector3(0f, 0f, -thrust * v);
+                Move("left");
             }
             else if (key == KeyCode.Space)
             {
-                ForceDirection = new Vector3(0f, 2f, 0f);
+                Move("up");
             }
 
             // Add force
@@ -99,6 +99,31 @@ public class SphereHandler : MonoBehaviour
         }
 
         return KeyCode.None;
+    }
+
+    void Move(string dir)
+    {
+        Vector3 forceDirection = new Vector3();
+
+        switch(dir)
+        {
+            case "forward":
+                forceDirection = new Vector3(-thrust, 0f, 0f);
+                break;
+            case "backward":
+                forceDirection = new Vector3(thrust, 0f, 0f);
+                break;
+            case "right":
+                forceDirection = new Vector3(0f, 0f, thrust);
+                break;
+            case "left":
+                forceDirection = new Vector3(0f, 0f, -thrust);
+                break;
+            case "up":
+                forceDirection = new Vector3(0f, 2f, 0f);
+                break;
+        }
+        rb.AddForce(forceDirection, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision other)
