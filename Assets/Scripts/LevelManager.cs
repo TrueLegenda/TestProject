@@ -12,8 +12,9 @@ public class LevelManager : MonoBehaviour
     public GameObject surface;
     public static bool FinishedGenerating = false;
     // Instructions For GameManager
-    public static List<Vector3> Position = new List<Vector3>();
-    public static List<string> Model = new List<string>();
+    public static List<Vector3> Positions = new List<Vector3>();
+    public static List<ObjectType> Models = new List<ObjectType>();
+    private Vector3 initScale;
 
     void Start()
     {
@@ -28,8 +29,8 @@ public class LevelManager : MonoBehaviour
         if(GameManager.IsLevelFinished)
         {
             // Clear Insructions Data
-            Position.RemoveAll(item => item != null);
-            Model.RemoveAll(item => item != null);
+            Positions.Clear();
+            Models.Clear();
 
             // Reset Level Variables
             GameManager.IsLevelFinished = false;
@@ -57,11 +58,11 @@ public class LevelManager : MonoBehaviour
     void GenerateMap()
     {
         // Set Level Difficulty
-        surface.transform.localScale = new Vector3(1.25f * surface.transform.localScale.x, 1f, 16f);
+        surface.transform.localScale += new Vector3(0.25f * 50f, 0f, 0f);
 
         // Add Floor Data
-        Position.Add(new Vector3(-surface.transform.localScale.x / 2 + 3, 1f, -0.5f));
-        Model.Add("Floor");
+        Positions.Add(new Vector3(-surface.transform.localScale.x / 2 + 3, 1f, -0.5f));
+        Models.Add(ObjectType.Floor);
 
         // Determine Amount Of Obstacles
         // Whole Surface Size
@@ -77,13 +78,13 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < obstaclesAmount; i++)
         {
             Vector3 pos = new Vector3(-spacing * (i + 1), (i + 1) * rnd.Next(2, 3), rnd.Next(-6, 6));
-            Position.Add(pos);
-            Model.Add("Obstacle");
+            Positions.Add(pos);
+            Models.Add(ObjectType.Obstacle);
         }
 
         // Create Instructions For Endpoint
-        Position.Add(new Vector3(Position[obstaclesAmount][0] - 3.8f, Position[obstaclesAmount][1], -0.5f));
-        Model.Add("Endpoint");
+        Positions.Add(new Vector3(Positions[obstaclesAmount][0] - 3.8f, Positions[obstaclesAmount][1], -0.5f));
+        Models.Add(ObjectType.Endpoint);
 
         //Call GameManager
         FinishedGenerating = true;

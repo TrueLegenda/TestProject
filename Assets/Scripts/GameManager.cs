@@ -26,16 +26,16 @@ public class GameManager : MonoBehaviour
 
         if(LevelManager.FinishedGenerating)
         {
-            for (int i = 0; i < LevelManager.Position.Count; i++)
+            for (int i = 0; i < LevelManager.Positions.Count; i++)
             {
                 GameObject obj = Floor;
-                switch (LevelManager.Model[i])
+                switch (LevelManager.Models[i])
                 {
-                    case "Floor":
+                    case ObjectType.Floor:
                         obj = Floor;
                         obj.name = "Floor";
                         break;
-                    case "Obstacle":
+                    case ObjectType.Obstacle:
                         // Choose Obstacle Randomly
                         if (rnd.Next(1, 5) == 1)
                         {
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
                             obj.name = "Obstacle_1";
 
                             // Set Z Position To The Middle Of The Map
-                            LevelManager.Position[i] = new Vector3(LevelManager.Position[i].x, LevelManager.Position[i].y, -0.5f);
+                            LevelManager.Positions[i] = new Vector3(LevelManager.Positions[i].x, LevelManager.Positions[i].y, -0.5f);
                         }
                         else
                         {
@@ -51,12 +51,12 @@ public class GameManager : MonoBehaviour
                             obj.name = "Obstacle_2";
                         }
                         break;
-                    case "Endpoint":
+                    case ObjectType.Endpoint:
                         obj = Endpoint;
                         obj.name = "Endpoint";
                         break;
                 }
-                Instantiate(obj, LevelManager.Position[i], new Quaternion());
+                Instantiate(obj, LevelManager.Positions[i], new Quaternion());
             }
             LevelManager.FinishedGenerating = false;
         }
@@ -72,4 +72,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+}
+
+public enum ObjectType
+{
+    None,
+    Obstacle,
+    Floor,
+    Endpoint
 }
