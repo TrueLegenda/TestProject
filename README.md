@@ -1,13 +1,9 @@
 # To Do:
 1 - Camera Controller
 
-2 - Player Respawn
+2 - Trampoline
 
-3 - Trampoline
-
-5 - Level Manager(Generate Map)
-
-6 - End Game After 3 Strikes
+3 - End Game After 3 Strikes
 
 # Suggestions
 1 - Commit Per Task
