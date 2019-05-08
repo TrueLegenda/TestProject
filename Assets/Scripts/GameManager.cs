@@ -18,6 +18,12 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        // Check If Player Wants To Quit
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         if(LevelManager.FinishedGenerating)
         {
             for (int i = 0; i < LevelManager.Position.Count; i++)

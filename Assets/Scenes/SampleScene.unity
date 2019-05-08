@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117bd9ada3ef0a94480bc857d56ea617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 963194225}
+  cam: {fileID: 963194225}
   sphere: {fileID: 968802013}
 --- !u!114 &963194230
 MonoBehaviour:

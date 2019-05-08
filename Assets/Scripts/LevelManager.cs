@@ -76,7 +76,7 @@ public class LevelManager : MonoBehaviour
         // Instructions For Object's Properties (Model And Position)
         for (int i = 0; i < obstaclesAmount; i++)
         {
-            Vector3 pos = new Vector3(-spacing * (i + 1), i * rnd.Next(2, 3), rnd.Next(-6, 6));
+            Vector3 pos = new Vector3(-spacing * (i + 1), (i + 1) * rnd.Next(2, 3), rnd.Next(-6, 6));
             Position.Add(pos);
             Model.Add("Obstacle");
         }
