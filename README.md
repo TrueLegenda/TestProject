@@ -3,8 +3,6 @@
 
 2 - Trampoline
 
-3 - End Game After 3 Strikes
-
 4 - Fix Movement
 
 # Suggestions
