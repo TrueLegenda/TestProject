@@ -5,6 +5,8 @@
 
 3 - End Game After 3 Strikes
 
+4 - Fix Movement
+
 # Suggestions
 1 - Commit Per Task
 
