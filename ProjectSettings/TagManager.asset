@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Endpoint
+  - FloorTag
+  - Obstacle_2_Tag
   layers:
   - Default
   - TransparentFX

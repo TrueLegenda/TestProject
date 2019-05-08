@@ -18,7 +18,8 @@ public class SphereHandler : MonoBehaviour
     {
         return sphere.transform.position.y < -1;
     }
-    void Respawn()
+
+    private void Respawn()
     {
         // Respawn
         sphere.transform.position = new Vector3(0, 3.7f, 0);
@@ -66,7 +67,7 @@ public class SphereHandler : MonoBehaviour
             {
                 ForceDirection = new Vector3(0f, 0f, -thrust * v);
             }
-            else if (key == KeyCode.Space && collisionDetected)
+            else if (key == KeyCode.Space)
             {
                 ForceDirection = new Vector3(0f, 2f, 0f);
             }
@@ -108,7 +109,7 @@ public class SphereHandler : MonoBehaviour
         if (other.collider.tag == "Endpoint")
         {
             // Next Level
-            print("finished level");
+            GameManager.IsLevelFinished = true;
         }
     }
     private void OnCollisionExit(Collision collision)
