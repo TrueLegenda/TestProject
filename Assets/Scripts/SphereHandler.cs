@@ -14,6 +14,20 @@ public class SphereHandler : MonoBehaviour
     public float vCap;
     public float thrust;
 
+    bool IsOutOfBoundaries()
+    {
+        return sphere.transform.position.y < -1;
+    }
+    void Respawn()
+    {
+        // Respawn
+        sphere.transform.position = new Vector3(0, 3.7f, 0);
+
+        // Reset Momentom
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+    }
+
     void Start()
     {
         v = 1f;
@@ -22,6 +36,12 @@ public class SphereHandler : MonoBehaviour
     }
     void Update()
     {
+        // Respawn Player
+        if (IsOutOfBoundaries())
+        {
+            Respawn();
+        }
+
         // Check if key is pressed
         if (Input.anyKey)
         {
@@ -87,7 +107,7 @@ public class SphereHandler : MonoBehaviour
         // Check If Player Finished The Level
         if (other.collider.tag == "Endpoint")
         {
-            //Next Level
+            // Next Level
             print("finished level");
         }
     }
