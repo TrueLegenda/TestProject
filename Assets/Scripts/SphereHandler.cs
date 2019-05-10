@@ -8,7 +8,7 @@ public class SphereHandler : MonoBehaviour
     // Variables
     public static bool FinishedLevel = false;
     public static int Health = 3;
-    //private bool collisionDetected = true;
+    private bool collisionDetected = true;
     public GameObject sphere;
     public Rigidbody rb;
     public float v;
@@ -75,7 +75,7 @@ public class SphereHandler : MonoBehaviour
             {
                 Move("left");
             }
-            else if (key == KeyCode.Space)
+            else if (key == KeyCode.Space/* && collisionDetected*/)
             {
                 Move("up");
             }
@@ -136,7 +136,7 @@ public class SphereHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        // collisionDetected = true;
+        collisionDetected = true;
 
         // Check If Player Finished The Level
         if (other.collider.tag == "Endpoint")
@@ -147,6 +147,6 @@ public class SphereHandler : MonoBehaviour
     }
     private void OnCollisionExit(Collision collision)
     {
-        // collisionDetected = false;
+        collisionDetected = false;
     }
 }

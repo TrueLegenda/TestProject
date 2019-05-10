@@ -678,7 +678,7 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
-      Hash: a5476e9d5aa61b1c8af4e35d39ab6e5d
+      Hash: 38a2268aa8c988832a81f289d58dddb4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraHandler
