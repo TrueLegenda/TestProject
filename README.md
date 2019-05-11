@@ -17,5 +17,3 @@
 4 - Break Complicated Functions To Multiple Simple Ones
 
 5 - Avoid Repeating Code
-
-6 - HAVE FUN!
