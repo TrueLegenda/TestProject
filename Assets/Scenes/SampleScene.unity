@@ -312,6 +312,7 @@ MonoBehaviour:
   cam: {fileID: 963194225}
   yDeg: 20
   xDeg: 90
+  sensetivity: 10
   r: 7
   sphere: {fileID: 968802013}
 --- !u!114 &963194230
